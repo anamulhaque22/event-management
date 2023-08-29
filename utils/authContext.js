@@ -1,18 +1,20 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+  const router = useRouter()
 
   const login = (email, cookie) => {
     setUser({ email, cookie });
   };
 
   const checkUser = () => {
-    console.log("user:  " + user.email);
-    console.log("user:  " + user.cookie);
+    console.log("user:  " + user?.email);
+    console.log("user:  " + user?.cookie);
     if (user.email != null && user.cookie != null) {
       return true;
     } else {
@@ -25,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   };
   async function doSignOut() {
     try {
-      const response = await axios.post(
+      const response = await axios.get(
         process.env.NEXT_PUBLIC_API_ENDPOINT + "/admin/signout/",
         {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -36,7 +38,7 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       document.cookie = null;
 
-      router.push("/loginform");
+      router.push("/login");
     } catch (error) {
       console.error("error failed: ", error);
     }

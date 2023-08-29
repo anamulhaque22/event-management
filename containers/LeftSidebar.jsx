@@ -78,7 +78,7 @@ function LeftSidebar() {
             </ul>
           </details>
         </li>
-        <li>
+        {/* <li>
           <details>
             <summary>Settings</summary>
             <ul className="p-2 bg-base-100 text-sm">
@@ -87,7 +87,7 @@ function LeftSidebar() {
               </li>
             </ul>
           </details>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

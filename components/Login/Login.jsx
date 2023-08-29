@@ -7,7 +7,7 @@ import {
 } from "@/utils/formValidation";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputText from "../Input/InputText";
 import ErrorText from "../Typography/ErrorText";
 
@@ -17,11 +17,17 @@ function Login() {
     password: "",
   };
 
-  const { login } = useAuth();
+  const { login, checkUser } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loginObj, setLoginObj] = useState(INITIAL_LOGIN_OBJ);
+
+  useEffect(() => {
+    if(checkUser()){
+      router.push('/')
+    }
+  }, [])
 
   const submitForm = async (e) => {
     e.preventDefault();
