@@ -1,4 +1,4 @@
-import { useAuth } from "@/utils/authContext";
+import { useAdminAuth } from "@/utils/authContext";
 import axiosInstance from "@/utils/axiosInstance";
 import {
   errorToast,
@@ -17,7 +17,7 @@ function Login() {
     password: "",
   };
 
-  const { login, checkUser } = useAuth();
+  const { login, checkUser } = useAdminAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");

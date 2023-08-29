@@ -1,9 +1,10 @@
 import FullPageLayout from "@/containers/FullPageLayout";
 import Layout from "@/containers/Layout";
 import "@/styles/globals.css";
-import { AuthProvider } from "@/utils/authContext";
+import { AdminAuthProvider } from "@/utils/authContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthProvider } from "./attendee/util/authcontext";
 
 export default function App({ Component, pageProps, router }) {
   
@@ -19,11 +20,14 @@ export default function App({ Component, pageProps, router }) {
 
 
   return (
-    <AuthProvider>
-        <RenderLayout>
+    <AdminAuthProvider>
+      <AuthProvider>
+      <RenderLayout>
         <Component {...pageProps} />
     <ToastContainer />
     </RenderLayout>
       </AuthProvider>
+       
+      </AdminAuthProvider>
   );
 }

@@ -1,4 +1,4 @@
-import { useAuth } from "@/utils/authContext";
+import { useAdminAuth } from "@/utils/authContext";
 import Bars3Icon from "@heroicons/react/24/outline/Bars3Icon";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,7 +6,7 @@ import { useEffect } from "react";
 // import { themeChange } from "theme-change";
 
 function Header() {
-  const {logout, checkUser} = useAuth()
+  const {logout, checkUser} = useAdminAuth()
   const router = useRouter();
   function logoutUser() {
     logout()

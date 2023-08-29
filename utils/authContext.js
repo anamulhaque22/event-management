@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AdminAuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const router = useRouter()
 
@@ -50,4 +50,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAdminAuth = () => useContext(AuthContext);
